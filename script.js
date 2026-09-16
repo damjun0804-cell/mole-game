@@ -4,7 +4,8 @@ let timerId = null;
 let moleTimerId = null;
 
 const maxScore = 30;
-const spawnInterval = 770; // 30점 달성 시 최고 기록이 6.99초 이하로 나오도록 간격 설정
+// 출현 주기를 0.68초로 단축 (30점 달성 시 약 20.4초 소요되어 최대 9.6초, 최소 8초 이상 남기기 가능)
+const spawnInterval = 680; 
 
 const holes = document.querySelectorAll('.hole');
 
@@ -46,12 +47,12 @@ function randomHole() {
     const moleIndex = Math.floor(Math.random() * holes.length);
     holes[moleIndex].classList.add('show-mole');
 
-    // 3. 20% 확률로 다른 구멍에 폭탄 추가 등장
-    if (Math.random() < 0.20) {
+    // 3. 폭탄 확률을 10%로 낮춤 (난이도 하향)
+    if (Math.random() < 0.10) {
         let bombIndex;
         do {
             bombIndex = Math.floor(Math.random() * holes.length);
-        } while (bombIndex === moleIndex); // 두더지와 겹치지 않도록
+        } while (bombIndex === moleIndex); // 두더지와 겹치지 않도록 처리
 
         holes[bombIndex].classList.add('show-bomb');
     }
@@ -86,11 +87,11 @@ function endGame(isWin, message) {
     clearInterval(moleTimerId);
     holes.forEach(hole => hole.classList.remove('show-mole', 'show-bomb'));
     
-    // 남은 시간 6.99초 이하 제한 조건 보정
-    if (isWin && timeLeft > 6.99) {
-        timeLeft = 6.99;
-        document.getElementById('time-left').innerText = "6.99";
-        message = `축하합니다! 30점을 달성하셨습니다! (남은 시간: 6.99초)`;
+    // 남은 시간이 8.00초를 초과하여 성공했을 경우 8.00초로 보정 처리
+    if (isWin && timeLeft > 8.00) {
+        timeLeft = 8.00;
+        document.getElementById('time-left').innerText = "8.00";
+        message = `축하합니다! 30점을 달성하셨습니다! (남은 시간: 8.00초)`;
     }
 
     alert(message);
