@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.game-container {
+    text-align: center;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.score-board {
+    font-size: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-around;
+}
+
+#start-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#start-btn:hover {
+    background-color: #45a049;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 15px;
+    justify-content: center;
+}
+
+.hole {
+    width: 100px;
+    height: 100px;
+    background-color: #8B4513; /* 구멍 색상 (흙 색) */
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* 두더지 캐릭터 */
+.mole {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 100%; /* 처음에는 구멍 밑에 숨어있음 */
+    left: 0;
+    transition: top 0.2s ease-in-out;
+    
+    /* -------------------------------------------------- */
+    /* 원하는 사진 파일명을 아래 url('파일명')에 입력하세요. */
+    background-image: url('mole.png');
+    /* -------------------------------------------------- */
+    
+    background-size: cover;
+    background-position: center;
+}
+
+/* 두더지가 튀어나왔을 때 */
+.hole.up .mole {
+    top: 0;
+}
