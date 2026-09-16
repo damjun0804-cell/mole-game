@@ -57,7 +57,7 @@ body {
     box-sizing: border-box;
 }
 
-/* 두더지 스타일 */
+/* 두더지 이미지 설정 */
 .mole {
     width: 100%;
     height: 100%;
@@ -72,7 +72,7 @@ body {
     background-color: transparent;
 }
 
-/* 폭탄 스타일 (이미지가 없을 경우 빨간색 폭탄 아이콘 모양으로 표시) */
+/* 폭탄 이미지/아이콘 설정 */
 .bomb {
     width: 100%;
     height: 100%;
@@ -87,14 +87,19 @@ body {
     align-items: center;
     font-weight: bold;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 .bomb::after {
     content: "💣 폭탄";
 }
 
-.hole.up .mole,
-.hole.up .bomb {
+/* 두더지일 때만 두더지가 올라옴 */
+.hole.up.is-mole .mole {
+    top: 0;
+}
+
+/* 폭탄일 때만 폭탄이 올라옴 */
+.hole.up.is-bomb .bomb {
     top: 0;
 }
