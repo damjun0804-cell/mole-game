@@ -87,11 +87,11 @@ function endGame(isWin, message) {
     clearInterval(moleTimerId);
     holes.forEach(hole => hole.classList.remove('show-mole', 'show-bomb'));
     
-    // 남은 시간이 8.00초를 초과하여 성공했을 경우 8.00초로 보정 처리
-    if (isWin && timeLeft > 8.00) {
-        timeLeft = 8.00;
-        document.getElementById('time-left').innerText = "8.00";
-        message = `축하합니다! 30점을 달성하셨습니다! (남은 시간: 8.00초)`;
+    // 남은 시간이 15.00초를 초과하여 성공했을 경우 15.00초로 보정 처리
+    if (isWin && timeLeft > 15.00) {
+        timeLeft = 15.00;
+        document.getElementById('time-left').innerText = "15.00";
+        message = `축하합니다! 30점을 달성하셨습니다! (남은 시간: 15.00초)`;
     }
 
     alert(message);
