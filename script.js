@@ -4,14 +4,13 @@ let timerId = null;
 let moleTimerId = null;
 
 const maxScore = 30;
-const spawnInterval = 770; // 30점 달성 시 최대 6.99초 남기도록 주기 설정 (0.77초)
+const spawnInterval = 770; // 30점 달성 시 6.99초 이하로 남도록 간격 0.77초 지정
 
 const holes = document.querySelectorAll('.hole');
 
-// 초기 구멍 내 두더지 및 폭탄 요소 배치
+// 구멍 태그 초기 세팅
 holes.forEach(hole => {
-    // 기존 요소 중복 생성 방지
-    hole.innerHTML = '';
+    hole.innerHTML = ''; // 중복 방지
 
     const mole = document.createElement('div');
     mole.classList.add('mole');
@@ -19,7 +18,7 @@ holes.forEach(hole => {
     const bomb = document.createElement('div');
     bomb.classList.add('bomb');
 
-    // 두더지 클릭
+    // 두더지 클릭 시
     mole.addEventListener('click', (e) => {
         e.stopPropagation();
         if (hole.classList.contains('is-mole') && hole.classList.contains('up')) {
@@ -33,7 +32,7 @@ holes.forEach(hole => {
         }
     });
 
-    // 폭탄 클릭 (즉시 실패)
+    // 폭탄 클릭 시 (즉시 실패)
     bomb.addEventListener('click', (e) => {
         e.stopPropagation();
         if (hole.classList.contains('is-bomb') && hole.classList.contains('up')) {
@@ -46,25 +45,22 @@ holes.forEach(hole => {
 });
 
 function randomHole() {
-    // 1. 모든 구멍의 상태 초기화
+    // 1. 모든 구멍 상태 초기화
     holes.forEach(hole => {
         hole.classList.remove('up', 'is-mole', 'is-bomb');
     });
 
-    // 2. 랜덤 구멍 선택 (두더지용)
+    // 2. 두더지 무조건 1개 등장 (랜덤 위치)
     const moleIndex = Math.floor(Math.random() * holes.length);
     const moleHole = holes[moleIndex];
-
-    // 두더지는 무조건 등장
     moleHole.classList.add('is-mole', 'up');
 
-    // 3. 15%의 확률로 다른 구멍에 폭탄 출현 (두더지와 다른 구멍)
-    const shouldSpawnBomb = Math.random() < 0.15;
-    if (shouldSpawnBomb) {
+    // 3. 20% 확률로 두더지가 없는 다른 구멍에 폭탄 추가 출현
+    if (Math.random() < 0.20) {
         let bombIndex;
         do {
             bombIndex = Math.floor(Math.random() * holes.length);
-        } while (bombIndex === moleIndex); // 두더지 구멍과 겹치지 않게 처리
+        } while (bombIndex === moleIndex);
 
         const bombHole = holes[bombIndex];
         bombHole.classList.add('is-bomb', 'up');
@@ -78,7 +74,6 @@ function startGame() {
     document.getElementById('time-left').innerText = timeLeft.toFixed(2);
     document.getElementById('start-btn').disabled = true;
 
-    // 타이머 시작
     moleTimerId = setInterval(randomHole, spawnInterval);
 
     const startTime = Date.now();
@@ -101,7 +96,7 @@ function endGame(isWin, message) {
     clearInterval(moleTimerId);
     holes.forEach(hole => hole.classList.remove('up', 'is-mole', 'is-bomb'));
     
-    // 최소 남은 시간 보정 (최대 6.99초 남김 제약조건)
+    // 남은 시간 보정 제약조건 (최대 6.99초 이하)
     if (isWin && timeLeft > 6.99) {
         timeLeft = 6.99;
         document.getElementById('time-left').innerText = "6.99";
