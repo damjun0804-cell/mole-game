@@ -6,7 +6,6 @@ let currentHole = null;
 
 const maxScore = 30;
 
-// 구멍 9개 요소 생성 및 클릭 이벤트 설정
 const holes = document.querySelectorAll('.hole');
 holes.forEach(hole => {
     const mole = document.createElement('div');
@@ -18,7 +17,6 @@ holes.forEach(hole => {
             hole.classList.remove('up');
             currentHole = null;
 
-            // 최대 점수 30점 도달 시 게임 승리 및 즉시 종료
             if (score >= maxScore) {
                 endGame(true);
             }
@@ -37,17 +35,14 @@ function randomHole() {
 }
 
 function startGame() {
-    // 초기화
     score = 0;
     timeLeft = 30;
     document.getElementById('score').innerText = score;
     document.getElementById('time-left').innerText = timeLeft;
     document.getElementById('start-btn').disabled = true;
 
-    // 0.8초마다 랜덤 위치에 두더지 등장
     moleTimerId = setInterval(randomHole, 800);
 
-    // 1초마다 카운트다운
     timerId = setInterval(() => {
         timeLeft--;
         document.getElementById('time-left').innerText = timeLeft;
