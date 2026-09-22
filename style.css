@@ -7,133 +7,118 @@
 
 body {
     font-family: 'Pretendard', sans-serif;
-    /* 레트로 아케이드 오락실 분위기의 배경 */
-    background: radial-gradient(circle, #2b1055 0%, #7597de 100%);
+    /* 어두운 레트로 오락실 내부 배경 */
+    background: #0d0e15;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
     color: #fff;
-    overflow: hidden;
 }
 
-/* 아케이드 게임기 캐비닛 본체 레아아웃 */
+/* 옛날 아케이드 게임기 목재/플라스틱 하우징 */
 .game-container {
     text-align: center;
-    background: #111827;
-    padding: 35px 30px;
-    border-radius: 30px;
-    /* 게임기 하우징 외곽 프레임 효과 */
-    border: 6px solid #ec4899;
-    box-shadow: 
-        0 0 20px #ec4899,
-        0 0 40px rgba(236, 72, 153, 0.4),
-        inset 0 0 15px rgba(0, 0, 0, 0.8);
-    max-width: 440px;
+    background: #222531;
+    padding: 30px 25px;
+    border-radius: 16px;
+    border: 6px solid #474d66;
+    box-shadow: 0 12px 0px #12131a, 0 20px 30px rgba(0, 0, 0, 0.8);
+    max-width: 420px;
     width: 90%;
-    position: relative;
 }
 
-/* 아케이드 타이틀 상단 간판 디자인 */
+/* 아케이드 타이틀 간판 */
 h1 {
-    font-family: 'Press Start 2P', 'Pretendard', cursive;
-    margin: 0 0 25px 0;
-    font-size: 20px;
-    color: #facc15;
-    text-shadow: 
-        3px 3px 0px #dc2626,
-        0 0 10px #facc15;
+    font-family: 'Press Start 2P', cursive;
+    margin: 0 0 20px 0;
+    font-size: 18px;
+    color: #ffcc00;
+    text-shadow: 3px 3px 0px #d62828;
     letter-spacing: -1px;
 }
 
-/* 네온 스코어보드 패널 */
+/* 레트로 전광판 전광판 스코어보드 */
 .score-board {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 700;
     margin-bottom: 20px;
     display: flex;
     justify-content: space-between;
-    background: #000;
-    padding: 14px 18px;
-    border-radius: 12px;
-    border: 2px solid #06b6d4;
-    box-shadow: 0 0 10px rgba(6, 182, 212, 0.5), inset 0 0 8px rgba(6, 182, 212, 0.3);
+    background: #000000;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 3px solid #3a3f58;
 }
 
 .score-board span {
-    color: #a5f3fc;
+    color: #aaaaaa;
 }
 
 .score-board strong {
     font-family: 'Press Start 2P', monospace;
-    color: #38bdf8;
-    font-size: 16px;
-    text-shadow: 0 0 5px #38bdf8;
+    color: #00ff66;
+    font-size: 15px;
 }
 
-/* 오락기 조작 버튼 스타일 */
+/* 3D 레트로 조작 버튼 */
 #start-btn {
     width: 100%;
-    padding: 16px 20px;
-    font-family: 'Press Start 2P', 'Pretendard', sans-serif;
-    font-size: 14px;
+    padding: 15px 20px;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 13px;
     font-weight: 800;
-    background: linear-gradient(180deg, #f43f5e 0%, #be123c 100%);
+    background: #e63946;
     color: #fff;
-    border: 3px solid #fff;
-    border-radius: 16px;
+    border: none;
+    border-radius: 10px;
     cursor: pointer;
-    margin-bottom: 25px;
-    box-shadow: 0 6px 0px #881337, 0 10px 15px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+    box-shadow: 0 6px 0px #9e2a2b;
     transition: all 0.1s ease;
-    text-shadow: 1px 1px 2px #000;
 }
 
 #start-btn:hover {
-    background: linear-gradient(180deg, #fb7185 0%, #e11d48 100%);
-    box-shadow: 0 6px 0px #881337, 0 0 15px #f43f5e;
+    background: #f15bb5;
+    box-shadow: 0 6px 0px #a21368;
 }
 
 #start-btn:active {
     transform: translateY(4px);
-    box-shadow: 0 2px 0px #881337, 0 5px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 0px #9e2a2b;
 }
 
 #start-btn:disabled {
-    background: #475569;
-    border-color: #94a3b8;
-    box-shadow: none;
-    color: #94a3b8;
-    text-shadow: none;
+    background: #555555;
+    box-shadow: 0 6px 0px #333333;
+    color: #888888;
     cursor: not-allowed;
     transform: none;
 }
 
-/* 게임 플레이 필드 (흙/풀밭 아케이드 박스) */
+/* 풀밭/흙 구멍 필드 */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 100px);
-    grid-gap: 16px;
+    grid-gap: 14px;
     justify-content: center;
-    background: #15803d;
-    padding: 20px;
-    border-radius: 20px;
-    border: 4px solid #166534;
-    box-shadow: inset 0 10px 15px rgba(0, 0, 0, 0.6);
+    background: #2a5223;
+    padding: 16px;
+    border-radius: 12px;
+    border: 4px solid #1b3816;
 }
 
 /* 구멍 디자인 */
 .hole {
     width: 100px;
     height: 100px;
-    background: radial-gradient(circle, #271306 0%, #0a0502 100%);
-    border: 4px solid #78350f;
+    background: #1a0f07;
+    border: 4px solid #5c3317;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    box-shadow: inset 0 10px 12px rgba(0, 0, 0, 0.9);
 }
 
 /* 두더지 캐릭터 */
@@ -144,12 +129,11 @@ h1 {
     position: absolute;
     top: 100%;
     left: 0;
-    transition: top 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: top 0.15s ease-out;
     background-image: url('mole.png');
     background-size: 80%;
     background-repeat: no-repeat;
     background-position: center bottom;
-    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.5));
 }
 
 /* 폭탄 캐릭터 */
@@ -160,18 +144,18 @@ h1 {
     position: absolute;
     top: 100%;
     left: 0;
-    transition: top 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    background: radial-gradient(circle at 30% 30%, #ef4444, #7f1d1d);
+    transition: top 0.15s ease-out;
+    background: #d90429;
     border-radius: 50%;
     font-weight: bold;
     color: white;
-    font-size: 32px;
+    font-size: 30px;
     line-height: 92px;
     text-align: center;
-    box-shadow: inset -4px -4px 8px rgba(0, 0, 0, 0.5), 0 0 15px rgba(239, 68, 68, 0.8);
+    border: 3px solid #000;
 }
 
-/* 캐릭터 출현 설정 */
+/* 캐릭터 출현 위치 */
 .hole.show-mole .mole {
     display: block;
     top: 10%;
