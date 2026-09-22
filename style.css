@@ -1,124 +1,65 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Pretendard:wght@700;800&display=swap');
-
-* {
-    box-sizing: border-box;
-    user-select: none;
-}
-
 body {
-    font-family: 'Pretendard', sans-serif;
-    /* 어두운 레트로 오락실 내부 배경 */
-    background: #0d0e15;
+    font-family: Arial, sans-serif;
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    color: #fff;
 }
 
-/* 옛날 아케이드 게임기 목재/플라스틱 하우징 */
 .game-container {
     text-align: center;
-    background: #222531;
-    padding: 30px 25px;
-    border-radius: 16px;
-    border: 6px solid #474d66;
-    box-shadow: 0 12px 0px #12131a, 0 20px 30px rgba(0, 0, 0, 0.8);
-    max-width: 420px;
-    width: 90%;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* 아케이드 타이틀 간판 */
-h1 {
-    font-family: 'Press Start 2P', cursive;
-    margin: 0 0 20px 0;
-    font-size: 18px;
-    color: #ffcc00;
-    text-shadow: 3px 3px 0px #d62828;
-    letter-spacing: -1px;
-}
-
-/* 레트로 전광판 전광판 스코어보드 */
 .score-board {
-    font-size: 14px;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 20px;
+    margin-bottom: 15px;
     display: flex;
-    justify-content: space-between;
-    background: #000000;
-    padding: 12px 16px;
-    border-radius: 8px;
-    border: 3px solid #3a3f58;
+    justify-content: space-around;
 }
 
-.score-board span {
-    color: #aaaaaa;
-}
-
-.score-board strong {
-    font-family: 'Press Start 2P', monospace;
-    color: #00ff66;
-    font-size: 15px;
-}
-
-/* 3D 레트로 조작 버튼 */
 #start-btn {
-    width: 100%;
-    padding: 15px 20px;
-    font-family: 'Press Start 2P', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    background: #e63946;
-    color: #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 6px;
     cursor: pointer;
     margin-bottom: 20px;
-    box-shadow: 0 6px 0px #9e2a2b;
-    transition: all 0.1s ease;
 }
 
 #start-btn:hover {
-    background: #f15bb5;
-    box-shadow: 0 6px 0px #a21368;
-}
-
-#start-btn:active {
-    transform: translateY(4px);
-    box-shadow: 0 2px 0px #9e2a2b;
+    background-color: #45a049;
 }
 
 #start-btn:disabled {
-    background: #555555;
-    box-shadow: 0 6px 0px #333333;
-    color: #888888;
+    background-color: #cccccc;
     cursor: not-allowed;
-    transform: none;
 }
 
-/* 풀밭/흙 구멍 필드 */
 .grid {
     display: grid;
     grid-template-columns: repeat(3, 100px);
-    grid-gap: 14px;
+    grid-gap: 15px;
     justify-content: center;
-    background: #2a5223;
-    padding: 16px;
-    border-radius: 12px;
-    border: 4px solid #1b3816;
 }
 
-/* 구멍 디자인 */
 .hole {
     width: 100px;
     height: 100px;
-    background: #1a0f07;
-    border: 4px solid #5c3317;
+    background-color: #e0e0e0;
+    border: 4px solid #8B4513;
     border-radius: 50%;
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 /* 두더지 캐릭터 */
@@ -129,11 +70,11 @@ h1 {
     position: absolute;
     top: 100%;
     left: 0;
-    transition: top 0.15s ease-out;
+    transition: top 0.15s ease-in-out;
     background-image: url('mole.png');
-    background-size: 80%;
+    background-size: contain;
     background-repeat: no-repeat;
-    background-position: center bottom;
+    background-position: center;
 }
 
 /* 폭탄 캐릭터 */
@@ -144,23 +85,23 @@ h1 {
     position: absolute;
     top: 100%;
     left: 0;
-    transition: top 0.15s ease-out;
-    background: #d90429;
+    transition: top 0.15s ease-in-out;
+    background-color: #ff4d4d;
     border-radius: 50%;
     font-weight: bold;
     color: white;
-    font-size: 30px;
-    line-height: 92px;
+    font-size: 20px;
+    line-height: 100px;
     text-align: center;
-    border: 3px solid #000;
 }
 
-/* 캐릭터 출현 위치 */
+/* 두더지 등장 시 */
 .hole.show-mole .mole {
     display: block;
-    top: 10%;
+    top: 0;
 }
 
+/* 폭탄 등장 시 */
 .hole.show-bomb .bomb {
     display: block;
     top: 0;
